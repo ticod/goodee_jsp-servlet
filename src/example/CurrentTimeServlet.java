@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 
 @WebServlet("/ServletTest")
-public class ServletTest extends HttpServlet {
+public class CurrentTimeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

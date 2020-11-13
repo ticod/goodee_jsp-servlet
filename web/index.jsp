@@ -22,6 +22,6 @@
     <title>JSP에서 Servlet</title>
   </head>
   <body>
-  <a href="/ServletTest" methods="get">Servlet으로 넘어갑니다.</a>
+  <a href="/CurrentTimeServlet" methods="get">Servlet으로 넘어갑니다.</a>
   </body>
 </html>

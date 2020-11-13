@@ -19,10 +19,9 @@
     pageEncoding="utf-8" %>
 <html>
   <head>
-    <title>JSP에서 사용되는 주석</title>
-    <% String msg = "jsp 주석 예제입니다."; %>
+    <title>JSP에서 Servlet</title>
   </head>
   <body>
-  <a href="/Servlet2" methods="get">Servlet으로 넘어갑니다.</a>
+  <a href="/CurrentTimeServlet" methods="get">Servlet으로 넘어갑니다.</a>
   </body>
 </html>
