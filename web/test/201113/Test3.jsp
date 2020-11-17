@@ -10,6 +10,7 @@
 <%
     String date = (String) session.getAttribute("date");
     session.removeAttribute("date");
+//    session.invalidate(); // 현재 session 객체를 제거하고, 새로운 session 객체로 변경
     if (date == null) {
 %>
 <script>
