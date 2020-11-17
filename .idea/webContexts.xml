@@ -3,7 +3,11 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/web/chap7/book.jsp" value="file://$PROJECT_DIR$/web/chap7" />
+        <entry key="file://$PROJECT_DIR$/web/chap7/joinForm.jsp" value="file://$PROJECT_DIR$/web/chap7" />
         <entry key="file://$PROJECT_DIR$/web/index.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/jdbc/jdbc2.jsp" value="file://$PROJECT_DIR$/web/jdbc" />
+        <entry key="file://$PROJECT_DIR$/web/model1/joinform.jsp" value="file://$PROJECT_DIR$/web/model1" />
       </map>
     </option>
   </component>
