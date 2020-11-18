@@ -35,9 +35,7 @@
     <table>
         <caption>회원 정보 보기</caption>
         <tr>
-            <td rowspan="7"><img src="<%=member.getPicture()%>"></td>
-        </tr>
-        <tr>
+            <td rowspan="7" width="30%"><img src="picture/<%=member.getPicture()%>" width="200" height="210"></td>
             <th>아이디</th>
             <td><%=member.getId()%></td>
         </tr>
@@ -59,8 +57,10 @@
         </tr>
         <tr>
             <td colspan="2">
-                <a href="">[수정]</a>
-                <a href="">[탈퇴]</a>
+                <a href="updateform.jsp?id=<%=parameterId%>">[수정]</a>
+                <% if (!sessionId.equals("admin") && !parameterId.equals("admin")) { %>
+                <a href="deleteform.jsp?id=<%=parameterId%>">[탈퇴]</a>
+                <% } %>
                 <a href="main.jsp">[돌아가기]</a>
             </td>
         </tr>
