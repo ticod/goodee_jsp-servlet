@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDao {
 
@@ -60,5 +62,72 @@ public class MemberDao {
             DbConnection.close(conn, pstmt, rs);
         }
         return null;
+    }
+
+    public int update(Member member) {
+        String sql = "update member set pass = ?, name = ?, gender = ?, tel = ?, email = ?, picture = ? where id = ?";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, member.getPass());
+            pstmt.setString(2, member.getName());
+            pstmt.setInt(3, member.getGender());
+            pstmt.setString(4, member.getTel());
+            pstmt.setString(5, member.getEmail());
+            pstmt.setString(6, member.getPicture());
+            pstmt.setString(7, member.getId());
+            return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+        return 0;
+    }
+
+    public List<Member> selectAll() {
+        String sql = "select * from member";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<Member> members = new ArrayList<>();
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Member member = new Member();
+                member.setId(rs.getString("id")); // column 명으로 접근
+                member.setPass(rs.getString("pass"));
+                member.setName(rs.getString("name"));
+                member.setGender(rs.getInt("gender"));
+                member.setTel(rs.getString("tel"));
+                member.setEmail(rs.getString("email"));
+                member.setPicture(rs.getString("picture"));
+                members.add(member);
+            }
+            return members;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    public int delete(String id) {
+        String sql = "delete from member where id = ?";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+        return 0;
     }
 }
