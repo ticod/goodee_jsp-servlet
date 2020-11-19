@@ -35,7 +35,7 @@
     <table>
         <caption>회원 정보 보기</caption>
         <tr>
-            <td rowspan="7" width="30%"><img src="picture/<%=member.getPicture()%>" width="200" height="210"></td>
+            <td rowspan="7" width="30%"><img src="/picture/<%=member.getPicture()%>" width="200" height="210"></td>
             <th>아이디</th>
             <td><%=member.getId()%></td>
         </tr>

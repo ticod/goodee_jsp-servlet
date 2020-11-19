@@ -73,7 +73,7 @@
             <td colspan="3">
                 <input type="submit" value="회원정보 수정">
                 <% if (!sessionId.equals("admin") || parameterId.equals("admin")) { %>
-                <input type="submit" value="비밀번호 수정" onclick="winPasswordChange()">
+                <input type="button" value="비밀번호 수정" onclick="winPasswordChange()">
                 <% } %>
                 <input type="button" value="돌아가기" onclick="history.go(-1)">
             </td>

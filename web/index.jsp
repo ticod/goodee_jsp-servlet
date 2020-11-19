@@ -23,5 +23,6 @@
   </head>
   <body>
   <a href="/CurrentTimeServlet" methods="get">Servlet으로 넘어갑니다.</a>
+  <a href="/model1/main.jsp">model1 게시판</a>
   </body>
 </html>
