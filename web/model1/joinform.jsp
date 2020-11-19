@@ -56,8 +56,8 @@
 </form>
 <script>
 function winUpload() {
-    const op = "width=500, height=150, left=50, top=150";
-    open("pictureForm.jsp", "", op);
+    const op = "width=500, height=500, left=50, top=150";
+    open("pictureform.jsp", "", op);
 }
 </script>
 </body>

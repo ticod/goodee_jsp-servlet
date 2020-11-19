@@ -52,7 +52,7 @@
             <a href="info.jsp?id=<%=member.getId()%>"><%=member.getId()%></a>
         </td>
         <td>
-            <img src="picture/sm_<%=member.getPicture()%>" width="20" height="30">
+            <img src="/picture/sm_<%=member.getPicture()%>" width="40" height="45">
         </td>
         <td>
             <%=member.getName()%>

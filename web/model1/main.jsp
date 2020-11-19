@@ -18,12 +18,8 @@
 </head>
 <body>
 <h3><%=login%> 로그인 되었습니다.</h3>
-<h3><a href="javascript:logoutCheck()">로그아웃</a></h3>
+<h3><a href="#" onclick="logoutCheck()">로그아웃</a></h3>
 <h3><a href="info.jsp?id=<%=login%>">회원 정보 보기</a></h3>
-<% } %>
-<% if (login.equals("admin")) { %>
-    <h3><a href="list.jsp">회원 목록 보기</a></h3>
-<% } %>
 <script>
     function logoutCheck() {
         if (confirm('로그아웃하시겠습니까?')) {
@@ -32,5 +28,13 @@
         }
     }
 </script>
+<% if (login.equals("admin")) { %>
+    <h3><a href="list.jsp">회원 목록 보기</a></h3>
 </body>
 </html>
+<% } } else { %>
+<script>
+    alert("로그인 해주세요");
+    location.href = "loginform.jsp";
+</script>
+<% } %>

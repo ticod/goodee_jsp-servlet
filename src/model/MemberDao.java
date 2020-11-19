@@ -130,4 +130,22 @@ public class MemberDao {
         }
         return 0;
     }
+
+    public int updatePassword(String id, String pw) {
+        String sql = "update member set pass = ? where id = ?";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, pw);
+            pstmt.setString(2, id);
+            return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+        return 0;
+    }
 }
