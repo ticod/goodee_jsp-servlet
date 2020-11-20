@@ -22,7 +22,7 @@
     <title>JSP에서 Servlet</title>
   </head>
   <body>
-  <a href="/CurrentTimeServlet" methods="get">Servlet으로 넘어갑니다.</a>
-  <a href="/model1/main.jsp">model1 게시판</a>
+  <a href="/ServletTest" methods="get">Servlet으로 넘어갑니다.</a>
+  <a href="/model1/member/main.jsp">model1 게시판</a>
   </body>
 </html>
