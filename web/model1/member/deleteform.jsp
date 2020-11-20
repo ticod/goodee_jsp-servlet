@@ -27,7 +27,7 @@ location.href = "main.jsp";
 <head>
     <meta charset="UTF-8">
     <title>삭제 페이지</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <form action="delete.jsp" method="post" name="f" onsubmit="return inputCheck(this)">

@@ -1,5 +1,5 @@
-<%@ page import="model.Member" %>
-<%@ page import="model.MemberDao" %><%--
+<%@ page import="model.member.Member" %>
+<%@ page import="model.member.MemberDao" %><%--
   Date: 2020-11-17
 --%>
 <%@ page contentType="text/html;charset=UTF-8"

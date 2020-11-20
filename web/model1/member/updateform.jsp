@@ -1,5 +1,5 @@
-<%@ page import="model.Member" %>
-<%@ page import="model.MemberDao" %><%--
+<%@ page import="model.member.Member" %>
+<%@ page import="model.member.MemberDao" %><%--
   Date: 2020-11-18
 --%>
 <%@ page contentType="text/html;charset=UTF-8"
@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 수정</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <%
@@ -35,12 +35,12 @@
 } else {
     Member member = new MemberDao().selectOne(parameterId);
 %>
-<form action="update.jsp" method="post" onsubmit="return inputCheck(this)">
+<form action="update.jsp" name="f" method="post" onsubmit="return inputCheck(this)">
     <table>
         <tr>
             <td rowspan="4">
                 <input type="hidden" name="picture" value="<%=member.getPicture()%>">
-                <img src="picture/<%=member.getPicture()%>" width="100" height="110" id="pic"> <br>
+                <img src="/picture/<%=member.getPicture()%>" width="100" height="120" id="pic"> <br>
                 <font size="1"><a href="javascript:winUpload()">사진 수정</a></font>
             </td>
             <th>아이디</th>
@@ -95,7 +95,7 @@ function winPasswordChange() {
 }
 
 function winUpload() {
-    const op = "width=500, height=150, left=50, top=150";
+    const op = "width=500, height=500, left=50, top=150";
     window.open("pictureform.jsp", "", op);
 }
 </script>

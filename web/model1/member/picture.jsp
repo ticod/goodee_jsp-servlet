@@ -27,7 +27,7 @@
 %>
 <script>
     const pic = window.opener.document.getElementById('pic');
-    pic.src = "/picture/sm_<%=fname%>";
+    pic.src = "/picture/<%=fname%>";
     window.opener.document.f.picture.value = "<%=fname%>";
     window.close();
 </script>

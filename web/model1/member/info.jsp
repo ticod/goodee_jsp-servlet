@@ -1,5 +1,5 @@
-<%@ page import="model.Member" %>
-<%@ page import="model.MemberDao" %><%--
+<%@ page import="model.member.Member" %>
+<%@ page import="model.member.MemberDao" %><%--
   Date: 2020-11-17
 --%>
 <%@ page contentType="text/html;charset=UTF-8"
@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보 보기</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <%  request.setCharacterEncoding("utf-8");
