@@ -8,6 +8,7 @@
         <entry key="file://$PROJECT_DIR$/web/index.jsp" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/jdbc/jdbc2.jsp" value="file://$PROJECT_DIR$/web/jdbc" />
         <entry key="file://$PROJECT_DIR$/web/model1/joinform.jsp" value="file://$PROJECT_DIR$/web/model1" />
+        <entry key="file://$PROJECT_DIR$/web/model1/pwform.jsp" value="file://$PROJECT_DIR$/web/model1" />
         <entry key="file://$PROJECT_DIR$/web/model1/updateform.jsp" value="file://$PROJECT_DIR$/web/model1" />
         <entry key="file://$PROJECT_DIR$/web/upload/upload.jsp" value="file://$PROJECT_DIR$/web/upload" />
       </map>
