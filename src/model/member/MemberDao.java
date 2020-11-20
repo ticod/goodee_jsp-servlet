@@ -1,4 +1,6 @@
-package model;
+package model.member;
+
+import model.DbConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDao {
+
+    private Member setMember(ResultSet rs) throws SQLException {
+        Member member = new Member();
+        member.setId(rs.getString("id")); // column 명으로 접근
+        member.setPass(rs.getString("pass"));
+        member.setName(rs.getString("name"));
+        member.setGender(rs.getInt("gender"));
+        member.setTel(rs.getString("tel"));
+        member.setEmail(rs.getString("email"));
+        member.setPicture(rs.getString("picture"));
+        return member;
+    }
 
     /* insert into member (id, pass, name, gender, tel, picture)
     * values (?, ?, ?, ?, ?, ?, ?) */
@@ -46,15 +60,7 @@ public class MemberDao {
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                Member member = new Member();
-                member.setId(rs.getString("id")); // column 명으로 접근
-                member.setPass(rs.getString("pass"));
-                member.setName(rs.getString("name"));
-                member.setGender(rs.getInt("gender"));
-                member.setTel(rs.getString("tel"));
-                member.setEmail(rs.getString("email"));
-                member.setPicture(rs.getString("picture"));
-                return member;
+                return setMember(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,15 +102,7 @@ public class MemberDao {
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                Member member = new Member();
-                member.setId(rs.getString("id")); // column 명으로 접근
-                member.setPass(rs.getString("pass"));
-                member.setName(rs.getString("name"));
-                member.setGender(rs.getInt("gender"));
-                member.setTel(rs.getString("tel"));
-                member.setEmail(rs.getString("email"));
-                member.setPicture(rs.getString("picture"));
-                members.add(member);
+                members.add(setMember(rs));
             }
             return members;
         } catch (SQLException e) {
@@ -147,5 +145,50 @@ public class MemberDao {
             DbConnection.close(conn, pstmt, null);
         }
         return 0;
+    }
+
+    public String idSearch(String email, String tel) {
+        String sql = "select id from member where email = ? and tel = ?";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, tel);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    public String pwSearch(String id, String email, String tel) {
+        String sql = "select pass from member where id = ? and email = ? and tel = ?";
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, email);
+            pstmt.setString(3, tel);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("pass");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, rs);
+        }
+        return null;
     }
 }

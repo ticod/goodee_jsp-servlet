@@ -1,6 +1,6 @@
-<%@ page import="model.Member" %>
+<%@ page import="model.member.Member" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.MemberDao" %>
+<%@ page import="model.member.MemberDao" %>
 <%--
   Date: 2020-11-18
 --%>
@@ -32,7 +32,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 목록 페이지</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <% List<Member> members = new MemberDao().selectAll(); %>
@@ -72,6 +72,7 @@
     </tr>
     <% } %>
 </table>
+<h3 style="text-align: center"><a href="main.jsp">[돌아가기]</a></h3>
 </body>
 </html>
 <% } %>

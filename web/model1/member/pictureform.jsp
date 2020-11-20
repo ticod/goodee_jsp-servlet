@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 사진 등록</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <h3>사진 업로드</h3>

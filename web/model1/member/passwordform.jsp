@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>비밀번호 변경</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <form action="password.jsp" method="post" name="f" onsubmit="return inCheck(this)">

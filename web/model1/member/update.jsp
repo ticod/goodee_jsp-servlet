@@ -1,10 +1,10 @@
-<%@ page import="model.MemberDao" %>
-<%@ page import="model.Member" %><%--
+<%@ page import="model.member.MemberDao" %>
+<%@ page import="model.member.Member" %><%--
   Date: 2020-11-18
 --%>
 <%@ page contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
-<jsp:useBean class="model.Member" id="member" scope="request"/>
+<jsp:useBean class="model.member.Member" id="member" scope="request"/>
 <jsp:setProperty name="member" property="*" />
 <%
     Member updateMember = member;

@@ -1,4 +1,4 @@
-<%@ page import="model.MemberDao" %>
+<%@ page import="model.member.MemberDao" %>
 <%--
   Date: 2020-11-19
 --%>

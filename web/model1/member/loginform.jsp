@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인 화면</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <form action="login.jsp" method="post" name="f" onsubmit="return inputCheck(this)">
@@ -26,8 +26,8 @@
             <td colspan="2">
                 <input type="submit" value="로그인">
                 <input type="button" value="회원가입" onclick="location.href='joinform.jsp'">
-                <input type="button" value="아이디 찾기" onclick="winOpen('idForm')">
-                <input type="button" value="비밀번호 찾기" onclick="winOpen('pwForm')">
+                <input type="button" value="아이디 찾기" onclick="winOpen('idform')">
+                <input type="button" value="비밀번호 찾기" onclick="winOpen('pwform')">
             </td>
         </tr>
     </table>
