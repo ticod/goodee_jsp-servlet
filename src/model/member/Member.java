@@ -10,6 +10,7 @@ public class Member {
     private String tel;
     private String email;
 
+    /* getter, setter, toString */
     @Override
     public String toString() {
         return "Member{" +
