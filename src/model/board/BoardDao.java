@@ -23,7 +23,7 @@ public class BoardDao {
         b.setGrplevel(rs.getInt("grplevel"));
         b.setGrpstep(rs.getInt("grpstep"));
         b.setReadcnt(rs.getInt("readcnt"));
-        b.setRegdate(rs.getDate("regdate"));
+        b.setRegdate(rs.getTimestamp("regdate"));
         return b;
     }
 
@@ -56,8 +56,8 @@ public class BoardDao {
             pstmt.setInt(1, board.getNum());
             pstmt.setString(2, board.getName());
             pstmt.setString(3, board.getPass());
-            pstmt.setString(5, board.getSubject());
-            pstmt.setString(4, board.getContent());
+            pstmt.setString(4, board.getSubject());
+            pstmt.setString(5, board.getContent());
             pstmt.setString(6, board.getFile1());
             pstmt.setInt(7, board.getGrp());
             pstmt.setInt(8, board.getGrplevel());
@@ -94,6 +94,10 @@ public class BoardDao {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<Board> list = new ArrayList<>();
+
+        // limit X, Y
+        // X번째 row부터 Y개만큼 가져온다.
+        // oracle에서는 rownum을 사용한다.
         String sql = "select * from board order by grp desc, grpstep limit ?, ?";
 
         try {
@@ -150,5 +154,62 @@ public class BoardDao {
         } finally {
             DbConnection.close(conn, pstmt, null);
         }
+    }
+
+    public void grpStepAdd(int grp, int grpStep) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        String sql = "update board set grpstep = grpstep + 1 where grp = ? and grpstep > ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, grp);
+            pstmt.setInt(2, grpStep);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+    }
+
+    public boolean update(Board board) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        String sql = "update board set" +
+                " name = ?, subject = ?, content = ?, file1 = ?" +
+                "where num = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, board.getName());
+            pstmt.setString(2, board.getSubject());
+            pstmt.setString(3, board.getContent());
+            pstmt.setString(4, board.getFile1());
+            pstmt.setInt(5, board.getNum());
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+        return false;
+    }
+
+    public boolean delete(int num) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
+        String sql = "delete from board where num = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, num);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbConnection.close(conn, pstmt, null);
+        }
+        return false;
     }
 }

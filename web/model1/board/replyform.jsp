@@ -1,22 +1,43 @@
+<%@ page import="model.board.BoardDao" %>
+<%@ page import="model.board.Board" %>
 <%--
-  Created by IntelliJ IDEA.
-  User: Do Hun
-  Date: 2020-11-20
-  Time: 오후 2:24
-  To change this template use File | Settings | File Templates.
+  Date: 2020-11-23
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%
+    int num = 0;
+    try {
+        num = Integer.parseInt(request.getParameter("num"));
+    } catch (NumberFormatException e) {}
+%>
+<% if (num == 0) { %>
+<script>
+    alert("잘못된 접근입니다");
+    history.go(-1);
+</script>
+<% } else { %>
+<%
+    BoardDao dao = new BoardDao();
+    Board board = dao.selectOne(num);
+%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>게시판 글쓰기</title>
+    <meta charset="UTF-8">
+    <title>답글 달기</title>
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
-<form action="write.jsp" method="post" enctype="multipart/form-data" name="f">
+<form action="reply.jsp" method="post" name="f">
+    <input type="hidden" name="num" value="<%=board.getNum()%>">
+    <input type="hidden" name="grp" value="<%=board.getGrp()%>">
+    <input type="hidden" name="grplevel" value="<%=board.getGrplevel()%>">
+    <input type="hidden" name="grpstep" value="<%=board.getGrpstep()%>">
     <table>
-        <caption>게시판 글쓰기</caption>
+        <caption>답글 등록</caption>
         <tr>
-            <th style="width:20%">글쓴이</th>
+            <th>글쓴이</th>
             <td><input type="text" name="name"></td>
         </tr>
         <tr>
@@ -25,19 +46,15 @@
         </tr>
         <tr>
             <th>제목</th>
-            <td><input type="text" name="subject"></td>
+            <td><input type="text" name="subject" value="RE:<%=board.getSubject()%>"></td>
         </tr>
         <tr>
             <th>내용</th>
             <td><textarea rows="15" name="content"></textarea></td>
         </tr>
         <tr>
-            <th>첨부파일</th>
-            <td><input type="file" name="file1"></td>
-        </tr>
-        <tr>
             <td colspan="2">
-                <a href="javascript:inputCheck()">[게시물 등록]</a>
+                <a href="javascript:inputCheck()">[답글 등록]</a>
             </td>
         </tr>
     </table>
@@ -70,3 +87,4 @@
 </script>
 </body>
 </html>
+<% } %>
