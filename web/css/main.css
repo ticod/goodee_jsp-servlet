@@ -1,4 +1,13 @@
 /* /chap7/css/main.css */
+body {
+    display: flex;
+    align-items: center;
+}
+
+body form {
+    width: 100%;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -21,7 +30,7 @@ td {
 
 caption {
     color: #111111;
-    font-size: 20px;
+    font-size: 25px;
     background-color: #FFFFFF;
 }
 
