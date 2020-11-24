@@ -1,4 +1,4 @@
-create table board {
+create table board (
     num int primary key,
     name varchar(30),
     pass varchar(20),
@@ -10,4 +10,4 @@ create table board {
     grp int,
     grplevel int(3),
     grpstep int(5)
-}
+);

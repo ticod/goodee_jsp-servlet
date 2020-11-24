@@ -31,23 +31,29 @@
     </tr>
     <tr style="height: 30vh;">
         <th>내용</th>
-        <td><%=board.getContent()%></td>
+        <td style="border-width: 1px; vertical-align: top; text-align: left;">
+            <%=board.getContent()%>
+        </td>
     </tr>
     <tr>
-        <% if (board.getFile1() != null) { %>
         <th>첨부파일</th>
+
         <td>
+            <% if (board.getFile1() != null && !board.getFile1().equals("")) { %>
             <a href="./file/<%=board.getFile1()%>">
                 <%=board.getFile1()%>
             </a>
+            <% } else { %>
+            &nbsp;
+            <% } %>
         </td>
-        <% } %>
+
     </tr>
     <tr>
         <td colspan="2">
-            <a href="">[답변]</a>
-            <a href="">[수정]</a>
-            <a href="">[삭제]</a>
+            <a href="replyform.jsp?num=<%=board.getNum()%>">[답변]</a>
+            <a href="updateform.jsp?num=<%=board.getNum()%>">[수정]</a>
+            <a href="deleteform.jsp?num=<%=board.getNum()%>">[삭제]</a>
             <a href="list.jsp">[목록]</a>
         </td>
     </tr>
